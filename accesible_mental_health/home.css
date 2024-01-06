@@ -1,6 +1,6 @@
 /* Navbar */
 nav {
-    background-color: #f2f2f2;
+    background: linear-gradient(to right, #008080, #66CDAA);
     padding: 10px;
 }
 
@@ -22,4 +22,56 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #666;
+}
+/* Additional Styles */
+.nav-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.links li {
+    margin-left: 10px;
+}
+
+.links li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.links li a:hover {
+    color: #666;
+}
+
+body {
+    background-image: url(https://png.pngtree.com/png-clipart/20230522/ourmid/pngtree-aesthetic-background-abstract-line-leaves-aqua-green-png-image_7104533.png);
+    background-size: cover; /* or 'contain' */
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;   /*keeps background image filled in the webpage*/
+    margin: 0; 
+    font-family: Garamond, Arial, sans-serif;
+    padding: 50px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
 }
