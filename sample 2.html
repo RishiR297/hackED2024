@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Garamond';
+            font-size: large;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px 15px rgba(0.5, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+            font-size: large;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 6px;
+            box-sizing: border-box;
+            border-radius: 11px;
+        }
+        .error-message {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        button {
+            background-color: rgb(12, 13, 13);
+            font-size: 19px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 17px;
+            transition: transform 0.46s ease;
+        }
+
+        button:hover {
+            background-color: rgb(14, 209, 189);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <h2>SignUp Here</h2>
+        <label for="user">Username:</label>
+        <input type="text" id="user" name="user" placeholder="Username" required>
+        <div class="error-message" id="user-Error"></div>
+
+        <label for="name">Your name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        <div class="error-message" id="name-Error"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example123@gmail.com" required>
+        <div class="error-message" id="email-Error"></div>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" minlength="8" required>
+        <div class="error-message" id="password-error"></div>
+
+        <button type="button" onclick="signup()">SignUp</button>
+    </form>
+
+    <script>
+        function signup() {
+            const user = document.getElementById('user').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            const userError = document.getElementById('user-Error');
+            const nameError = document.getElementById('name-Error');
+            const emailError = document.getElementById('email-Error');
+            const passwordError = document.getElementById('password-error');
+
+            // Check for empty fields
+            if (user === '') {
+                userError.textContent = 'Please fill in the username.';
+            } else {
+                // Username validation
+                if (!user.match(/^[a-zA-Z\s]+$/)) {
+                    userError.textContent = 'Invalid characters in the username.';
+                } else {
+                    userError.textContent = '';
+                }
+            }
+
+            if (name === '') {
+                nameError.textContent = 'Please fill in your name.';
+            } else {
+                // Name validation
+                if (!name.match(/^[a-zA-Z\s]+$/)) {
+                    nameError.textContent = 'Invalid characters in your name.';
+                } else {
+                    nameError.textContent = '';
+                }
+            }
+
+            if (email === '') {
+                emailError.textContent = 'Please fill in the email address.';
+            } else {
+                // Email validation
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    emailError.textContent = 'Invalid email address format.';
+                } else {
+                    emailError.textContent = '';
+                }
+            }
+
+            if (password === '') {
+                passwordError.textContent = 'Please fill in the password.';
+            } else {
+                // Password validation
+                const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+                if (!passwordPattern.test(password)) {
+                    passwordError.textContent = 'Password must be 8 characters or longer and include at least one uppercase letter, one number, and one special character (!@#$%^&*).';
+                } else {
+                    passwordError.textContent = '';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
