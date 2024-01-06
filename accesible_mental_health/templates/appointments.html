@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Therapist Appointment Booking</title>
-    <link href="{{ url_for('static',filename='css/appointments.css') }}" rel="stylesheet"/>
-</head>
-<body>
-    <h1>Book an Appointment with a Therapist</h1>
-    
+    <link href="{{ url_for('static',filename='css/appointments.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-center">
+        <!-- nav header -->
+        <div class="nav-header">
+          <h1>Book an Appointment with a Therapist</h1>
+          <!-- <img src="./logo.jp" class="logo" alt="logo" /> -->
+          <button class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <!-- links -->
+        <ul class="links">
+          <li>
+            <a href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li>
+            <a href="{{ url_for('appointments') }}l">Appointments</a>
+          </li>
+          <li>
+            <a href="providers.html">Health Care Providers</a>
+          </li>
+          <!-- <li>
+                    <a href="community.html">Community</a>
+                </li>
+                <li>
+                    <a href="faq.html">FAQ/a>
+                </li>-->
+        </ul>
+      </div>
+    </nav>
     <form action="submit_appointment.php" method="POST">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="date">Preferred Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
-        
-        <label for="time">Preferred Time:</label>
-        <input type="time" id="time" name="time" required><br><br>
-        
-        <label for="message">Additional Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-        
-        <input type="submit" value="Book Appointment">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" name="date" required /><br /><br />
+
+      <label for="time">Preferred Time:</label>
+      <input type="time" id="time" name="time" required /><br /><br />
+
+      <label for="message">Additional Message:</label><br />
+      <textarea id="message" name="message" rows="4" cols="50"></textarea
+      ><br /><br />
+
+      <input type="submit" value="Book Appointment" />
     </form>
-</body>
+  </body>
 </html>
