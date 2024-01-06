@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Therapist Appointment Booking</title>
+    <link href="appointments.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1>Book an Appointment with a Therapist</h1>
+    
+    <form action="submit_appointment.php" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        
+        <label for="time">Preferred Time:</label>
+        <input type="time" id="time" name="time" required><br><br>
+        
+        <label for="message">Additional Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+        
+        <input type="submit" value="Book Appointment">
+    </form>
+</body>
+</html>
