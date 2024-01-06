@@ -1,12 +1,14 @@
 body {
     font-family: Garamond, Arial, sans-serif;
-    padding: 50px;
+    padding: 150px;
+    padding-bottom: 150px; /* Add this line */
     background-image: url(https://img.freepik.com/free-vector/watercolor-painted-abstract-background_23-2149111768.jpg);
     background-size: cover; /* or 'contain' */
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;   /*keeps background image filled in the webpage*/
 }
+
 
 h1 {
     color: #333;
@@ -18,6 +20,7 @@ form {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
 }
 
 label {
