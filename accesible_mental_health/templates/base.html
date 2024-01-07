@@ -1,34 +1,192 @@
-<nav>
-    <div class="nav-center">
-      <!-- nav header -->
-      <div class="nav-header">
-        <h1>Mental Health Web App</h1>
-        <!-- Add this line -->
-        <button class="nav-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-      <!-- links -->
-      <ul class="links">
-        <li>
-          <a href="{{ url_for('appointments') }}">Book an Appointment</a>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle">Help</a>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-            <button type="button" class="question-btn">
-              <span class="plus-icon">
-                <i class="far fa-plus-square"></i>
-              </span>
+<style>
+
+nav {
+    background: var(--clr-white);
+    box-shadow: var(--light-shadow);
+  }
+  .nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .nav-toggle {
+    font-size: 1.5rem;
+    color: var(--clr-primary-5);
+    background: transparent;
+    border-color: transparent;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  .nav-toggle:hover {
+    color: var(--clr-primary-1);
+    transform: rotate(90deg);
+  }
+  .logo {
+    height: 40px;
+  }
+  .links a {
+    color: var(--clr-grey-3);
+    font-size: 1rem;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+  }
+  .links a:hover {
+    background: var(--clr-primary-8);
+    color: var(--clr-primary-5);
+    padding-left: 1.5rem;
+  }
+  .social-icons {
+    display: none;
+  }
+  .links {
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .links li {
+    margin-right: 20px; /* Adjust the value as needed */
+  }
+  
+  .show-links {
+    height: 10rem;
+  }
+  @media screen and (min-width: 800px) {
+    .nav-center {
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+    .nav-header {
+      padding: 0;
+    }
+    .nav-toggle {
+      display: none;
+    }
+    .links {
+      height: auto;
+      display: flex;
+    }
+    .links a {
+      padding: 0;
+      margin: 0 0.5rem;
+    }
+    .links a:hover {
+      padding: 0;
+      background: transparent;
+    }
+    .social-icons {
+      display: flex;
+    }
+    .social-icons a {
+      margin: 0 0.5rem;
+      color: var(--clr-primary-5);
+      transition: var(--transition);
+    }
+    .social-icons a:hover {
+      color: var(--clr-primary-7);
+    }
+  }
+  
+  /* DROPDOWN MENU */
+  /* Style the dropdown container */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: XXpx; /* Replace XX with the height of your navigation bar */
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+      </style>
+      <nav>
+        <div class="nav-center">
+          <!-- nav header -->
+          <div class="nav-header">
+            <h1>Mental Health Web App</h1>
+            <!-- Add this line -->
+            <button class="nav-toggle">
+              <i class="fas fa-bars"></i>
             </button>
           </div>
-        </li>
-        <li>
-          <a href="{{ url_for('login') }}">Login</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+          <!-- links -->
+          <ul class="links">
+            <li>
+              <a href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li>
+              <a href="{{ url_for('appointments') }}">Book an Appointment</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle">Help</a>
+              <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                <button type="button" class="question-btn">
+                  <span class="plus-icon">
+                    <i class="far fa-plus-square"></i>
+                  </span>
+                </button>
+              </div>
+            </li>
+            <li>
+              <a href="{{ url_for('login') }}">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+   
+    <script>
+      // Get the dropdown toggle
+      var dropdownToggle = document.querySelector(".dropdown-toggle");
+
+      // Get the dropdown content
+      var dropdownContent = document.querySelector(
+        ".dropdown .dropdown-content"
+      );
+
+      // Hide the dropdown content by default
+      dropdownContent.style.display = "none";
+
+      // Add a click event listener to the dropdown toggle
+      dropdownToggle.addEventListener("click", function (event) {
+        // Check if the dropdown content is visible
+        if (dropdownContent.style.display === "none") {
+          // If not, make it visible
+          dropdownContent.style.display = "block";
+        } else {
+          // If it is, hide it
+          dropdownContent.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
