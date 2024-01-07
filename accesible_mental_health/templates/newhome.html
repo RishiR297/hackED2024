@@ -17,12 +17,15 @@
       <p>How can we help you today?</p>
     </div>
     {% include 'base.html' %}
-
+    
       <div class="center-button-container">
+        <fieldset>
         <a href="{{ url_for('survey') }}">
-          <button id="survey-btn" class="center-button">Survey</button></a>
+          <button id="survey-btn" class="center-button">Survey</button></a
+        >
         <button id="mood-btn" class="center-button">Mood Tracker</button>
         <button id="track-btn" class="center-button">Chat Bot</button>
       </div>
+    </fieldset>
   </body>
 </html>
