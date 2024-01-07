@@ -41,7 +41,7 @@ def get_data():
             response = openai.ChatCompletion.create(
               model="gpt-3.5-turbo",
               messages=[
-                    {"role": "system", "content": "You are baymax from big hero 6 movie."},
+                    {"role": "system", "content": "You are baymax from big hero 6 movie but call yourself maxbay."},
                     {"role": "user", "content": user_input}
                 ]
             )
