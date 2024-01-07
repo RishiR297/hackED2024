@@ -60,6 +60,7 @@ body {
     line-height: 1;
     font-size: 0.875rem;
     padding-bottom: 50px;
+    background-image: url(bg.jpg);
   }
 
   form {
@@ -86,72 +87,72 @@ body {
     max-width: 900px;
 }
 .dropbtn {
-    position: fixed;
-    top: 2rem;
-    right: 3rem;
-    font-size: 2rem;
-    background: transparent;
-    border-color: transparent;
-    color: var(--clr-primary-5);
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  
-  .dropdown {
-    position: fixed;
-    top: 1rem;
-    right: 2rem;
-    font-size: 3rem;
-    background: transparent;
-    border-color: transparent;
-    color: var(--clr-primary-5);
-    transition: var(--transition);
-    cursor: pointer;
-    animation: bounce 2s ease-in-out infinite;
-    border: 20px solid transparent;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 6px 8px; /* Reduced padding */
-    font-size: 0.8rem; /* Reduced font size */
-    text-decoration: none;
-    display: block;
-    border-bottom: 2px solid #ddd;
-  }
-  
-  .dropdown-content a:last-child {
-    border-bottom: none;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background:  var(--clr-primary-10);
-    min-width: 200px; /* Adjust this if needed */
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    right: 0;
-    top: 2rem;
-    border: 2px var(--clr-primary-9);
-    border-radius: 15px;
-  }
-  
-  .profile-user,
-  .home-icon,
-  .help-icon,
-  .appointment-icon,
-  .logout-icon {
-    /* your styles here */
-    width: 20px; /* Adjust as needed */
-    height: 20px; /* Adjust as needed */
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #f1f1f1;
-    border-radius: 15px;
-  }
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-primary-5);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.dropdown {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  font-size: 3rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-primary-5);
+  transition: var(--transition);
+  cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+  border: 20px solid transparent;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 10px;
+  font-size: 0.8rem; /* Reduced font size */
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--clr-primary-10);
+  /* min-width: 200px; Adjust this if needed */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  top: 2rem;
+  border: 2px var(--clr-primary-9);
+  border-radius: 15px;
+}
+
+.profile-user,
+.home-icon,
+.help-icon,
+.appointment-icon,
+.logout-icon {
+  /* your styles here */
+  width: 20px; /* Adjust as needed */
+  height: 20px; /* Adjust as needed */
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  border-radius: 15px;
+}

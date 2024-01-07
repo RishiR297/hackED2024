@@ -60,6 +60,7 @@ body {
   line-height: 1;
   font-size: 0.875rem;
   padding-bottom: 50px;
+  background-image: url(bg.jpg);
 }
 
 form {
@@ -153,7 +154,7 @@ p {
 .dropdown-content {
   display: none;
   position: absolute;
-  background:  var(--clr-primary-10);
+  background: var(--clr-primary-10);
   /* min-width: 200px; Adjust this if needed */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -230,32 +231,30 @@ p {
   display: block;
   transition: transform 0.4s ease;
   border-color: rgba(255, 255, 255, 0.5);
-  
+
   /* Add these lines */
   width: 500px; /* or any specific value according to your design requirements */
   text-align: center; /* to keep the text centered */
 }
 
-
 /* Individual styling for each button */
 #survey-btn {
-  background-color: var( --clr-primary-8);
+  background-color: var(--clr-primary-8);
 }
 
 .center-button-container a {
   text-decoration: none;
 }
 
-
 #mood-btn {
-  background-color: var( --clr-grey-8);
+  background-color: var(--clr-grey-8);
 }
 
 #track-btn {
-  background-color: var( --clr-grey-6)
+  background-color: var(--clr-grey-6);
 }
 
-fieldset{
+fieldset {
   border: 2px solid var(--clr-primary-8);
   border-radius: 5px;
   padding: 5px;
