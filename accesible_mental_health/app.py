@@ -2,6 +2,16 @@ from flask import Flask, render_template, request, url_for, redirect, flash, sen
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from flask import Flask, render_template, jsonify, request
+# from flask_cors import CORS
+# from dotenv.main import load_dotenv
+from langchain.llms import OpenAI
+# from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationChain
+from langchain.memory import ConversationSummaryBufferMemory
+
+llm = OpenAI()
+memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=100)
 
 
 app = Flask(__name__)
@@ -107,6 +117,24 @@ def appointments():
 @app.route('/survey')
 def survey():
     return render_template('survey.html')
+
+@app.route('/index', methods=['GET','POST'])
+def index():
+    data = request.get_json()
+    text = data.get('data')
+    user_input = text
+    try:
+        conversation = ConversationChain(llm=llm, memory=memory)
+        
+        formatted_template = f'Please respond as baymax from big hero 6 movie: {user_input}'
+        output = conversation.predict(input=formatted_template)
+        
+        memory.save_context({"input": user_input}, {"output": output})
+        return jsonify({"response": True, "message": output})
+    except Exception as e:
+        print(e)
+        error_message = f'Error: {str(e)}'
+        return jsonify({"message": error_message, "response": False})
 
 @app.route('/secrets')
 @login_required
