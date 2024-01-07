@@ -73,6 +73,12 @@
     .answered {
       background-color: #d4edda !important;
     }
+
+    .disabled {
+      pointer-events: none;
+      color: #ccc;
+      background-color: #f9f9f9;
+    }
   </style>
 </head>
 <body>
@@ -116,6 +122,7 @@
     const calendarBody = document.getElementById("calendar-body");
     calendarBody.innerHTML = '';
 
+    const today = new Date();
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     let dateCounter = 1;
@@ -132,11 +139,19 @@
           cell.textContent = "";
         } else {
           cell.textContent = dateCounter;
-          const dayKey = `${year}-${month + 1}-${dateCounter}`;
-          cell.addEventListener("click", () => showSurveyPopup(dateCounter, month + 1, year, dayKey));
-          if (filledSurveys.includes(dayKey)) {
-            cell.classList.add('answered');
+          const clickedDate = new Date(year, month, dateCounter);
+
+          if (clickedDate <= today) {
+            const dayKey = `${year}-${month + 1}-${dateCounter}`;
+            cell.addEventListener("click", () => showSurveyPopup(dateCounter, month + 1, year, dayKey));
+            
+            if (filledSurveys.includes(dayKey)) {
+              cell.classList.add('answered');
+            }
+          } else {
+            cell.classList.add('disabled');
           }
+
           dateCounter++;
         }
 
