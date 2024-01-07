@@ -118,10 +118,6 @@ def signup():
 def newhome():
     return render_template('newhome.html')
 
-@app.route('/calendar', methods = ["GET", "POST"])
-def calendar():
-    return render_template('calendar.html')
-
 @app.route('/reset_password')
 def reset_password():
     return render_template('reset_password.html')
