@@ -15,188 +15,188 @@
   </head>
 <body>
   {% include 'base.html' %}
-<form action="#" method="post" id="moodSurveyForm">
-  <div class="survey-question">
-    <p>How would you describe your overall mood today?</p>
-    <label for="veryHappyCheckbox" class="checkbox-label">
-      😄 Very Happy
-      <input type="checkbox" id="veryHappyCheckbox" class="emoji-checkbox" name="mood[]" value="Very Happy">
-    </label>
+  <form action="#" method="post" id="moodSurveyForm">
+    <div class="survey-question">
+      <p>How would you describe your overall mood today?</p>
+      <label for="veryHappyRadio" class="radio-label">
+        😄 Very Happy
+        <input type="radio" id="veryHappyRadio" class="emoji-radio" name="mood" value="Very Happy">
+      </label>
+  
+      <label for="neutralRadio" class="radio-label">
+        😐 Neutral
+        <input type="radio" id="neutralRadio" class="emoji-radio" name="mood" value="Neutral">
+      </label>
+  
+      <label for="somewhatSadRadio" class="radio-label">
+        😢 Somewhat Sad
+        <input type="radio" id="somewhatSadRadio" class="emoji-radio" name="mood" value="Somewhat Sad">
+      </label>
+  
+      <label for="feelingAngryRadio" class="radio-label">
+        😠 Feeling Angry
+        <input type="radio" id="feelingAngryRadio" class="emoji-radio" name="mood" value="Feeling Angry">
+      </label>
+    </div>
+  
+    <div class="survey-question">
+      <p>How did you feel about your classes today?</p>
+      <label for="excitedRadio" class="radio-label">
+        😃 Excited and Engaged
+        <input type="radio" id="excitedRadio" class="emoji-radio" name="classes" value="Excited and Engaged">
+      </label>
+  
+      <label for="neutralClassesRadio" class="radio-label">
+        😐 Neutral
+        <input type="radio" id="neutralClassesRadio" class="emoji-radio" name="classes" value="Neutral">
+      </label>
+  
+      <label for="stressedRadio" class="radio-label">
+        😓 Stressed or Overwhelmed
+        <input type="radio" id="stressedRadio" class="emoji-radio" name="classes" value="Stressed or Overwhelmed">
+      </label>
+  
+      <label for="boredRadio" class="radio-label">
+        😒 Bored or Uninterested
+        <input type="radio" id="boredRadio" class="emoji-radio" name="classes" value="Bored or Uninterested">
+      </label>
+    </div>
 
-    <label for="neutralCheckbox" class="checkbox-label">
-      😐 Neutral
-      <input type="checkbox" id="neutralCheckbox" class="emoji-checkbox" name="mood[]" value="Neutral">
-    </label>
-
-    <label for="somewhatSadCheckbox" class="checkbox-label">
-      😢 Somewhat Sad
-      <input type="checkbox" id="somewhatSadCheckbox" class="emoji-checkbox" name="mood[]" value="Somewhat Sad">
-    </label>
-
-    <label for="feelingAngryCheckbox" class="checkbox-label">
-      😠 Feeling Angry
-      <input type="checkbox" id="feelingAngryCheckbox" class="emoji-checkbox" name="mood[]" value="Feeling Angry">
-    </label>
+    <div class="survey-question">
+      <p>How satisfied are you with your academic progress?</p>
+      <label for="verySatisfiedRadio" class="radio-label">
+        😊 Very Satisfied
+        <input type="radio" id="verySatisfiedRadio" class="emoji-radio" name="academicProgress" value="Very Satisfied">
+      </label>
+  
+      <label for="satisfiedRadio" class="radio-label">
+        🙂 Satisfied
+        <input type="radio" id="satisfiedRadio" class="emoji-radio" name="academicProgress" value="Satisfied">
+      </label>
+  
+      <label for="neutralProgressRadio" class="radio-label">
+        😕 Neutral
+        <input type="radio" id="neutralProgressRadio" class="emoji-radio" name="academicProgress" value="Neutral">
+      </label>
+  
+      <label for="dissatisfiedRadio" class="radio-label">
+        😟 Dissatisfied
+        <input type="radio" id="dissatisfiedRadio" class="emoji-radio" name="academicProgress" value="Dissatisfied">
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>How did you feel about your classes today?</p>
-    <label for="excitedCheckbox" class="checkbox-label">
-      😃 Excited and Engaged
-      <input type="checkbox" id="excitedCheckbox" class="emoji-checkbox" name="classes[]" value="Excited and Engaged">
-    </label>
-
-    <label for="neutralClassesCheckbox" class="checkbox-label">
-      😐 Neutral
-      <input type="checkbox" id="neutralClassesCheckbox" class="emoji-checkbox" name="classes[]" value="Neutral">
-    </label>
-
-    <label for="stressedCheckbox" class="checkbox-label">
-      😓 Stressed or Overwhelmed
-      <input type="checkbox" id="stressedCheckbox" class="emoji-checkbox" name="classes[]" value="Stressed or Overwhelmed">
-    </label>
-
-    <label for="boredCheckbox" class="checkbox-label">
-      😒 Bored or Uninterested
-      <input type="checkbox" id="boredCheckbox" class="emoji-checkbox" name="classes[]" value="Bored or Uninterested">
-    </label>
+      <p>Did you face any challenges or stressors today? If so, please share.</p>
+      <label for="challengesInput">
+        <textarea id="challengesInput" name="challenges" rows="3" cols="75" placeholder="Enter challenges/stressors"></textarea>
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>How satisfied are you with your academic progress?</p>
-    <label for="verySatisfiedCheckbox" class="checkbox-label">
-      😊 Very Satisfied
-      <input type="checkbox" id="verySatisfiedCheckbox" class="emoji-checkbox" name="academicProgress[]" value="Very Satisfied">
-    </label>
-
-    <label for="satisfiedCheckbox" class="checkbox-label">
-      🙂 Satisfied
-      <input type="checkbox" id="satisfiedCheckbox" class="emoji-checkbox" name="academicProgress[]" value="Satisfied">
-    </label>
-
-    <label for="neutralProgressCheckbox" class="checkbox-label">
-      😕 Neutral
-      <input type="checkbox" id="neutralProgressCheckbox" class="emoji-checkbox" name="academicProgress[]" value="Neutral">
-    </label>
-
-    <label for="dissatisfiedCheckbox" class="checkbox-label">
-      😟 Dissatisfied
-      <input type="checkbox" id="dissatisfiedCheckbox" class="emoji-checkbox" name="academicProgress[]" value="Dissatisfied">
-    </label>
+      <p>How well did you collaborate with your classmates on group projects or assignments?</p>
+      <label for="wellCollaborateRadio" class="radio-label">
+        👍 Very Well
+        <input type="radio" id="wellCollaborateRadio" class="emoji-radio" name="collaboration" value="Very Well">
+      </label>
+  
+      <label for="moderateCollaborateRadio" class="radio-label">
+        👌 Moderately Well
+        <input type="radio" id="moderateCollaborateRadio" class="emoji-radio" name="collaboration" value="Moderately Well">
+      </label>
+  
+      <label for="notWellCollaborateRadio" class="radio-label">
+        👎 Not Well
+        <input type="radio" id="notWellCollaborateRadio" class="emoji-radio" name="collaboration" value="Not Well">
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>Did you face any challenges or stressors today? If so, please share.</p>
-    <label for="challengesInput">
-      <textarea id="challengesInput" name="challenges" rows="3" cols="75" placeholder="Enter challenges/stressors"></textarea>
-    </label>
+      <p>How would you rate your level of motivation today?</p>
+      <label for="highlyMotivatedRadio" class="radio-label">
+        💪 Highly Motivated
+        <input type="radio" id="highlyMotivatedRadio" class="emoji-radio" name="motivation" value="Highly Motivated">
+      </label>
+  
+      <label for="moderateMotivatedRadio" class="radio-label">
+        👍 Moderately Motivated
+        <input type="radio" id="moderateMotivatedRadio" class="emoji-radio" name="motivation" value="Moderately Motivated">
+      </label>
+  
+      <label for="neutralMotivationRadio" class="radio-label">
+        😐 Neutral
+        <input type="radio" id="neutralMotivationRadio" class="emoji-radio" name="motivation" value="Neutral">
+      </label>
+  
+      <label for="lowMotivationRadio" class="radio-label">
+        😴 Low Motivation
+        <input type="radio" id="lowMotivationRadio" class="emoji-radio" name="motivation" value="Low Motivation">
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>How well did you collaborate with your classmates on group projects or assignments?</p>
-    <label for="wellCollaborateCheckbox" class="checkbox-label">
-      👍 Very Well
-      <input type="checkbox" id="wellCollaborateCheckbox" class="emoji-checkbox" name="collaboration[]" value="Very Well">
-    </label>
-
-    <label for="moderateCollaborateCheckbox" class="checkbox-label">
-      👌 Moderately Well
-      <input type="checkbox" id="moderateCollaborateCheckbox" class="emoji-checkbox" name="collaboration[]" value="Moderately Well">
-    </label>
-
-    <label for="notWellCollaborateCheckbox" class="checkbox-label">
-      👎 Not Well
-      <input type="checkbox" id="notWellCollaborateCheckbox" class="emoji-checkbox" name="collaboration[]" value="Not Well">
-    </label>
+      <p>Are there any specific concerns or issues affecting your mood that you'd like to discuss?</p>
+      <label for="concernsInput">
+        <textarea id="concernsInput" name="concerns" rows="3" cols="75" placeholder="Enter concerns/issues"></textarea>
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>How would you rate your level of motivation today?</p>
-    <label for="highlyMotivatedCheckbox" class="checkbox-label">
-      💪 Highly Motivated
-      <input type="checkbox" id="highlyMotivatedCheckbox" class="emoji-checkbox" name="motivation[]" value="Highly Motivated">
-    </label>
-
-    <label for="moderateMotivatedCheckbox" class="checkbox-label">
-      👍 Moderately Motivated
-      <input type="checkbox" id="moderateMotivatedCheckbox" class="emoji-checkbox" name="motivation[]" value="Moderately Motivated">
-    </label>
-
-    <label for="neutralMotivationCheckbox" class="checkbox-label">
-      😐 Neutral
-      <input type="checkbox" id="neutralMotivationCheckbox" class="emoji-checkbox" name="motivation[]" value="Neutral">
-    </label>
-
-    <label for="lowMotivationCheckbox" class="checkbox-label">
-      😴 Low Motivation
-      <input type="checkbox" id="lowMotivationCheckbox" class="emoji-checkbox" name="motivation[]" value="Low Motivation">
-    </label>
+      <p>How did your interactions with professors and peers contribute to your day?</p>
+      <label for="positiveInteractionsRadio" class="radio-label">
+        😃 Positive Interactions
+        <input type="radio" id="positiveInteractionsRadio" class="emoji-radio" name="interactions" value="Positive Interactions">
+      </label>
+  
+      <label for="neutralInteractionsRadio" class="radio-label">
+        😐 Neutral Interactions
+        <input type="radio" id="neutralInteractionsRadio" class="emoji-radio" name="interactions" value="Neutral Interactions">
+      </label>
+  
+      <label for="challengingInteractionsRadio" class="radio-label">
+        😕 Challenging Interactions
+        <input type="radio" id="challengingInteractionsRadio" class="emoji-radio" name="interactions" value="Challenging Interactions">
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>Are there any specific concerns or issues affecting your mood that you'd like to discuss?</p>
-    <label for="concernsInput">
-      <textarea id="concernsInput" name="concerns" rows="3" cols="75" placeholder="Enter concerns/issues"></textarea>
-    </label>
+      <p>How would you rate your work-life balance today?</p>
+      <label for="balancedRadio" class="radio-label">
+        ⚖️ Balanced
+        <input type="radio" id="balancedRadio" class="emoji-radio" name="workLifeBalance" value="Balanced">
+      </label>
+  
+      <label for="workHeavyRadio" class="radio-label">
+        😓 Work-Heavy
+        <input type="radio" id="workHeavyRadio" class="emoji-radio" name="workLifeBalance" value="Work-Heavy">
+      </label>
+  
+      <label for="relaxationRadio" class="radio-label">
+        🕰️ Time for Relaxation
+        <input type="radio" id="relaxationRadio" class="emoji-radio" name="workLifeBalance" value="Time for Relaxation">
+      </label>
   </div>
-
+  
   <div class="survey-question">
-    <p>How did your interactions with professors and peers contribute to your day?</p>
-    <label for="positiveInteractionsCheckbox" class="checkbox-label">
-      😃 Positive Interactions
-      <input type="checkbox" id="positiveInteractionsCheckbox" class="emoji-checkbox" name="interactions[]" value="Positive Interactions">
-    </label>
-
-    <label for="neutralInteractionsCheckbox" class="checkbox-label">
-      😐 Neutral Interactions
-      <input type="checkbox" id="neutralInteractionsCheckbox" class="emoji-checkbox" name="interactions[]" value="Neutral Interactions">
-    </label>
-
-    <label for="challengingInteractionsCheckbox" class="checkbox-label">
-      😕 Challenging Interactions
-      <input type="checkbox" id="challengingInteractionsCheckbox" class="emoji-checkbox" name="interactions[]" value="Challenging Interactions">
-    </label>
-  </div>
-
-  <div class="survey-question">
-    <p>How would you rate your work-life balance today?</p>
-    <label for="balancedCheckbox" class="checkbox-label">
-      ⚖️ Balanced
-      <input type="checkbox" id="balancedCheckbox" class="emoji-checkbox" name="workLifeBalance[]" value="Balanced">
-    </label>
-
-    <label for="workHeavyCheckbox" class="checkbox-label">
-      😓 Work-Heavy
-      <input type="checkbox" id="workHeavyCheckbox" class="emoji-checkbox" name="workLifeBalance[]" value="Work-Heavy">
-    </label>
-
-    <label for="relaxationCheckbox" class="checkbox-label">
-      🕰️ Time for Relaxation
-      <input type="checkbox" id="relaxationCheckbox" class="emoji-checkbox" name="workLifeBalance[]" value="Time for Relaxation">
-    </label>
-  </div>
-
-  <div class="survey-question">
-    <p>Did you engage in any extracurricular activities or hobbies today?</p>
-    <label for="artCheckbox" class="checkbox-label">
-      🎨 Art/Creative
-      <input type="checkbox" id="artCheckbox" class="emoji-checkbox" name="activities[]" value="Art/Creative">
-    </label>
-
-    <label for="exerciseCheckbox" class="checkbox-label">
-      🏋️‍♂️ Physical Exercise
-      <input type="checkbox" id="exerciseCheckbox" class="emoji-checkbox" name="activities[]" value="Physical Exercise">
-    </label>
-
-    <label for="readingCheckbox" class="checkbox-label">
-      📚 Reading/Studying
-      <input type="checkbox" id="readingCheckbox" class="emoji-checkbox" name="activities[]" value="Reading/Studying">
-    </label>
-
-    <label for="leisureCheckbox" class="checkbox-label">
-      🎮 Leisure Activities
-      <input type="checkbox" id="leisureCheckbox" class="emoji-checkbox" name="activities[]" value="Leisure Activities">
-    </label>
+      <p>Did you engage in any extracurricular activities or hobbies today?</p>
+      <label for="artRadio" class="radio-label">
+        🎨 Art/Creative
+        <input type="radio" id="artRadio" class="emoji-radio" name="activities" value="Art/Creative">
+      </label>
+  
+      <label for="exerciseRadio" class="radio-label">
+        🏋️‍♂️ Physical Exercise
+        <input type="radio" id="exerciseRadio" class="emoji-radio" name="activities" value="Physical Exercise">
+      </label>
+  
+      <label for="readingRadio" class="radio-label">
+        📚 Reading/Studying
+        <input type="radio" id="readingRadio" class="emoji-radio" name="activities" value="Reading/Studying">
+      </label>
+  
+      <label for="leisureRadio" class="radio-label">
+        🎮 Leisure Activities
+        <input type="radio" id="leisureRadio" class="emoji-radio" name="activities" value="Leisure Activities">
+      </label>
   </div>
 
   <button type="submit" id="submit">Submit</button>
