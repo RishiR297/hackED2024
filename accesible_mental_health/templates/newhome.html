@@ -3,30 +3,29 @@
   <head>
     <title>Dynamic Scrolling Page</title>
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link
       href="{{ url_for('static',filename='css/newhome.css') }}"
       rel="stylesheet"
     />
   </head>
-
   <body>
     <div class="header">
-      <h1>Hi, User!</h1>
-      <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-          <a href="#">Home</a>
-          <a href="#">Sign Out</a>
-          <a href="#">Take a Survey</a>
-          <a href="#">Book an Appointment</a>
-          <a href="#">Ask for Help</a>
-        </div>
-      </div>
+      <p>Hi, User!</p>
+      <p>How can we help you today?</p>
     </div>
-    <div class="container">
-      <div class="content">
-        <h2>Welcome to our website!</h2>
-        <p>Please select an option from the dropdown menu:</p>
+    {% include 'base.html' %}
+    
+      <div class="center-button-container">
+        <a href="{{ url_for('survey') }}">
+          <button id="survey-btn" class="center-button">Survey</button></a>
+
+          <a href="{{ url_for('calendar') }}">
+        <button id="mood-btn" class="center-button">Mood Tracker</button></a>
+
+        <a href="{{ url_for('index') }}"><button id="track-btn" class="center-button">Chat Bot</button></a>
       </div>
-    </div>
   </body>
 </html>
