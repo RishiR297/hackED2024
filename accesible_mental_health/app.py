@@ -81,6 +81,8 @@ def login():
 
     return render_template("login.html", logged_in=current_user.is_authenticated)
 
+
+
 @app.route('/signup', methods = ["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -136,13 +138,15 @@ def appointments():
 def survey():
     return render_template('survey.html')
 
+@app.route('/calendar', methods = ["GET", "POST"])
+def calendar():
+    return render_template('calendar.html')
+
 @app.route('/secrets')
 @login_required
 def secrets():
     print(current_user.name)
     return render_template("secrets.html", name=current_user.name, logged_in=True)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -21,7 +21,10 @@
       <div class="center-button-container">
         <a href="{{ url_for('survey') }}">
           <button id="survey-btn" class="center-button">Survey</button></a>
-        <button id="mood-btn" class="center-button">Mood Tracker</button>
+
+          <a href="{{ url_for('calendar') }}">
+        <button id="mood-btn" class="center-button">Mood Tracker</button></a>
+
         <a href="{{ url_for('index') }}"><button id="track-btn" class="center-button">Chat Bot</button></a>
       </div>
   </body>
