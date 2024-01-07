@@ -24,10 +24,20 @@
           <!-- links -->
           <ul class="links">
             <li>
-              <a href="{{ url_for('appointments') }}">Book an Appointments</a>
+              <a href="{{ url_for('appointments') }}">Book an Appointment</a>
             </li>
-            <li>
-              <a href="{{ url_for('help') }}">Help</a>
+            <li class="dropdown">
+              <a class="dropdown-toggle">Help</a>
+              <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                <button type="button" class="question-btn">
+                  <span class="plus-icon">
+                    <i class="far fa-plus-square"></i>
+                  </span>
+                </button>
+              </div>
             </li>
             <li>
               <a href="{{ url_for('login') }}">Login</a>
@@ -35,19 +45,33 @@
           </ul>
         </div>
       </nav>
-    </header>
-
     <main>
       <div class="items">
         <section class="about">
           <h2 id="about">About Us</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            euismod, nunc id aliquet tincidunt, nisl nunc ultricies metus, ac
-            aliquam nunc nunc nec justo.
-          </p>
+            <p>
+              Welcome to our Mental Health Web App. We are a dedicated team of
+              mental health professionals committed to providing accessible,
+              high-quality mental health services to our community. Our mission
+              is to empower individuals to take control of their mental health
+              journey by providing them with the tools and resources they need
+              to manage and improve their mental well-being.
+            </p>
+            <p>
+              Our platform offers a variety of services including therapy
+              sessions, support groups, and a wealth of online resources. We
+              believe in the power of technology to break down barriers and make
+              mental health care accessible to all. Whether you're seeking help
+              for the first time or you're on an ongoing journey, we're here to
+              support you every step of the way.
+            </p>
+            <p>
+              We understand that mental health is a personal journey, and we're
+              committed to providing a safe, supportive, and inclusive
+              environment for everyone. We're here to listen, to understand, and
+              to help you navigate your path to mental wellness.
+            </p>
         </section>
-
         <section class="services">
           <h2 id="services">Services</h2>
           <ul>
@@ -68,10 +92,35 @@
             <li>Phone: 123-456-7890</li>
           </ul>
         </section>
+        
       </div>
     </main>
     <footer>
       <p>''</p>
     </footer>
+    <script>
+      // Get the dropdown toggle
+      var dropdownToggle = document.querySelector(".dropdown-toggle");
+
+      // Get the dropdown content
+      var dropdownContent = document.querySelector(
+        ".dropdown .dropdown-content"
+      );
+
+      // Hide the dropdown content by default
+      dropdownContent.style.display = "none";
+
+      // Add a click event listener to the dropdown toggle
+      dropdownToggle.addEventListener("click", function (event) {
+        // Check if the dropdown content is visible
+        if (dropdownContent.style.display === "none") {
+          // If not, make it visible
+          dropdownContent.style.display = "block";
+        } else {
+          // If it is, hide it
+          dropdownContent.style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>

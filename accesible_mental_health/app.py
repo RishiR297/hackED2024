@@ -1,6 +1,10 @@
 from flask import Flask, jsonify, render_template, request
 app = Flask(__name__)
 
+@app.route('/base')
+def base():
+    return render_template('base.html')
+
 @app.route('/')
 def home():
     return render_template('home.html')
