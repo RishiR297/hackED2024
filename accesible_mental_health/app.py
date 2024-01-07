@@ -49,7 +49,7 @@ def login():
             return redirect(url_for('login'))
         else:
             login_user(userss)
-            return redirect(url_for('home'))
+            return redirect(url_for('newhome'))
 
     return render_template("login.html", logged_in=current_user.is_authenticated)
 
@@ -84,9 +84,9 @@ def signup():
 
     return render_template('signup.html', logged_in=current_user.is_authenticated)
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+@app.route('/newhome')
+def newhome():
+    return render_template('newhome.html')
 
 @app.route('/reset_password')
 def reset_password():
@@ -96,6 +96,17 @@ def reset_password():
 def forgot_password():
     return render_template('forgot_password.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/appointments')
+def appointments():
+    return render_template('appointments.html')
+
+@app.route('/survey')
+def survey():
+    return render_template('survey.html')
 
 @app.route('/secrets')
 @login_required

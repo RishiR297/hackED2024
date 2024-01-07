@@ -1,0 +1,158 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f4f4f4;
+  }
+
+  form {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .survey-question {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .emoji-checkbox {
+    display: none;
+  }
+
+  label {
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .emoji {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  label.checkbox-label {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="checkbox"]:checked + label.checkbox-label {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  textarea{
+      margin: 10px 0 0 0;
+      width: 100%;
+      min-height: 2em
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .dropbtn {
+    position: fixed;
+    top: 2rem;
+    right: 3rem;
+    font-size: 2rem;
+    background: transparent;
+    border-color: transparent;
+    color: var(--clr-primary-5);
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+    font-size: 3rem;
+    background: transparent;
+    border-color: transparent;
+    color: var(--clr-primary-5);
+    transition: var(--transition);
+    cursor: pointer;
+    animation: bounce 2s ease-in-out infinite;
+    border: 20px solid transparent;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 6px 8px; /* Reduced padding */
+    font-size: 0.8rem; /* Reduced font size */
+    text-decoration: none;
+    display: block;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background:  var(--clr-primary-10);
+    min-width: 200px; /* Adjust this if needed */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    top: 2rem;
+    border: 2px var(--clr-primary-9);
+    border-radius: 15px;
+  }
+  
+  .profile-user,
+  .home-icon,
+  .help-icon,
+  .appointment-icon,
+  .logout-icon {
+    /* your styles here */
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 15px;
+  }

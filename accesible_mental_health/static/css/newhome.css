@@ -1,49 +1,135 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(205, 86%, 17%);
+  --clr-primary-2: hsl(205, 77%, 27%);
+  --clr-primary-3: hsl(205, 72%, 37%);
+  --clr-primary-4: hsl(205, 63%, 48%);
+  /* primary/main color */
+  --clr-primary-5: hsl(205, 78%, 60%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(205, 89%, 70%);
+  --clr-primary-7: hsl(205, 90%, 76%);
+  --clr-primary-8: hsl(205, 86%, 81%);
+  --clr-primary-9: hsl(205, 90%, 88%);
+  --clr-primary-10: hsl(205, 100%, 96%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(125, 71%, 66%);
+  --clr-black: #222;
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  font-family: var(--ff-secondary);
+  background: var(--clr-grey-10);
+  color: var(--clr-grey-1);
+  line-height: 1;
+  font-size: 0.875rem;
+  padding-bottom: 50px;
+}
+
+form {
+  width: 60vw;
+  max-width: 500px;
+  min-width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: var(--clr-grey-10);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
 .container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  position: relative; /* Added */
-  border-radius: 10px; /* Added */
-  height: 100vh; /* Added */
-  display: flex; /* Added */
-  flex-direction: column; /* Added */
-  justify-content: center; /* Added */
-  align-items: center; /* Added */
-  overflow: hidden; /* Added */
+  position: relative;
+  border-radius: 10px;
+  height: 100vh;
+  /* display: flex; */
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
+  /* background-color: #333; */
+  /* color: #fff; */
+  padding: 2px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
-.content {
-  padding: 20px;
-  text-align: center;
+h2,
+p {
+  font-size: 2.5rem;
+  margin-bottom: auto;
+  margin-top: 20px;
+  padding: 2px;
+}
+.dropbtn {
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-primary-5);
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 .dropdown {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  font-size: 3rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-primary-5);
+  transition: var(--transition);
+  cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+  border: 20px solid transparent;
 }
 
 .dropdown:hover .dropdown-content {
@@ -52,11 +138,117 @@ body {
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 6px 8px; /* Reduced padding */
+  font-size: 0.8rem; /* Reduced font size */
   text-decoration: none;
   display: block;
+  border-bottom: 2px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background:  var(--clr-primary-10);
+  min-width: 200px; /* Adjust this if needed */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  top: 2rem;
+  border: 2px var(--clr-primary-9);
+  border-radius: 15px;
+}
+
+.profile-user,
+.home-icon,
+.help-icon,
+.appointment-icon,
+.logout-icon {
+  /* your styles here */
+  width: 20px; /* Adjust as needed */
+  height: 20px; /* Adjust as needed */
 }
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  border-radius: 15px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the text */
+  left: 50%;
+  margin-left: -60px; /* Use half of the width to center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.dropdown-content a:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* BUTTONS FORMAT */
+
+.center-button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+}
+
+.center-button {
+  padding: 20px 50px; /* top/bottom padding is 10px, left/right padding is 15px */
+  font-size: 30px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 50px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.center-button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+/* Individual styling for each button */
+#survey-btn {
+  background-color: var( --clr-primary-8);
+}
+
+.center-button-container a {
+  text-decoration: none;
+}
+
+
+#mood-btn {
+  background-color: var( --clr-grey-8);
+}
+
+#track-btn {
+  background-color: var( --clr-grey-6)
 }
