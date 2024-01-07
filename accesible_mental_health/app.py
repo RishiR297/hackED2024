@@ -16,7 +16,7 @@ db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = "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"
 CORS(app)
 
 @login_manager.user_loader
@@ -137,6 +137,10 @@ def appointments():
 @app.route('/survey')
 def survey():
     return render_template('survey.html')
+
+@app.route('/calendar', methods = ["GET", "POST"])
+def calendar():
+    return render_template('calendar.html')
 
 @app.route('/secrets')
 @login_required
