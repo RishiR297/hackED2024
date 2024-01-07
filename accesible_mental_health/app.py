@@ -13,6 +13,17 @@ def providers():
 def appointments():
     return render_template('appointments.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/forgot_password')
+def forgot_password():
+    return render_template('forgot_password.html')
 
 # code for graph
 y_values = []
