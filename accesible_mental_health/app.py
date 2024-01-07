@@ -1,69 +1,109 @@
-from flask import Flask, jsonify, render_template, request
-app = Flask(__name__)
+from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 
-@app.route('/base')
-def base():
-    return render_template('base.html')
 
-@app.route('/')
+app = Flask(_name_)
+app.config['SECRET_KEY'] = 'thisisasecretkey'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+db = SQLAlchemy()
+db.init_app(app)
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db.get_or_404(user, user_id)
+
+
+
+class user(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20))
+    email = db.Column(db.String(80), unique=True)
+    password = db.Column(db.String(80))
+
+with app.app_context():
+    db.create_all()
+
+@app.route('/', methods = ["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        print("email: ", email)
+
+        query = db.session.execute(db.select(user).where(user.email == email))
+        userss = query.scalar()
+        # Email doesn't exist or password incorrect.
+        if not userss:
+            print("That email does not exist, please try again.")
+            return redirect(url_for('login'))
+        elif not check_password_hash(userss.password, password):
+            print('Password incorrect, please try again.')
+            return redirect(url_for('login'))
+        else:
+            login_user(userss)
+            return redirect(url_for('home'))
+
+    return render_template("login.html", logged_in=current_user.is_authenticated)
+
+@app.route('/signup', methods = ["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        username = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        query = db.session.execute(db.select(user).where(user.email == email))
+
+        userss = query.scalar()
+        if userss:
+            print("You've already signed up with that email, log in instead!")
+            return redirect(url_for('login'))
+        
+        hash_and_salted_password = generate_password_hash(
+            request.form.get('password'),
+            method='pbkdf2:sha256',
+            salt_length=8)
+
+        new_user = user(
+        username=request.form.get('name'),
+        email = request.form.get('email'),
+        password = hash_and_salted_password,
+
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(new_user)
+        return redirect(url_for('login'))
+
+    return render_template('signup.html', logged_in=current_user.is_authenticated)
+
+@app.route('/home')
 def home():
     return render_template('home.html')
 
-@app.route('/providers')
-def providers():
-    return render_template('providers.html')
-
-@app.route('/appointments')
-def appointments():
-    return render_template('appointments.html')
-
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
+@app.route('/reset_password')
+def reset_password():
+    return render_template('reset_password.html')
 
 @app.route('/forgot_password')
 def forgot_password():
     return render_template('forgot_password.html')
 
-@app.route('/help')
-def help():
-    return render_template('help.html')
 
-@app.route('/newhome')
-def newhome():
-    return render_template('newhome.html')
+@app.route('/secrets')
+@login_required
+def secrets():
+    print(current_user.name)
+    return render_template("secrets.html", name=current_user.name, logged_in=True)
 
-# code for graph
-y_values = []
 
-@app.route('/update_graph', methods=['POST'])
-def update_graph():
-    # Get input data from the request
-    data = request.get_json()
-    node1 = data.get('node1')
-    node2 = data.get('node2')
 
-    # Convert the input values to numbers and add them to the y-values list
-    y_values.extend([float(node1), float(node2)])
-
-    # Generate x-values at fixed intervals
-    x_values = list(range(len(y_values)))
-
-    # Return the new graph data
-    return jsonify({
-        'labels': x_values,
-        'datasets': [{
-            'label': 'My Graph',
-            'data': y_values,
-            'fill': False,
-            'borderColor': 'rgb(75, 192, 192)',
-            'tension': 0.1
-        }]
-    })
-
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(debug=True)
