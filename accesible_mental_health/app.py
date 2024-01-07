@@ -25,6 +25,10 @@ def login():
 def forgot_password():
     return render_template('forgot_password.html')
 
+@app.route('/help')
+def help():
+    return render_template('help.html')
+
 # code for graph
 y_values = []
 
