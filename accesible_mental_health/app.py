@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory
+from flask import Flask, jsonify, render_template, request, url_for, redirect, flash, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-
+from flask_cors import CORS
+import openai
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecretkey'
@@ -11,16 +13,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy()
 db.init_app(app)
 
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+openai.api_key = os.getenv("OPENAI_API_KEY")
+CORS(app)
 
 @login_manager.user_loader
 def load_user(user_id):
     return db.get_or_404(user, user_id)
-
-
 
 class user(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -31,6 +32,33 @@ class user(UserMixin, db.Model):
 with app.app_context():
     db.create_all()
 
+@app.route('/data', methods=['POST', 'GET'])
+def get_data():
+    if request.method == 'POST':
+        data = request.get_json()
+        user_input = data.get('data')
+        try:
+            response = openai.ChatCompletion.create(
+              model="gpt-3.5-turbo",
+              messages=[
+                    {"role": "system", "content": "You are baymax from big hero 6 movie."},
+                    {"role": "user", "content": user_input}
+                ]
+            )
+            output = response['choices'][0]['message']['content']
+            return jsonify({"response": True, "message": output})
+        except Exception as e:
+            print(e)
+            error_message = f'Error: {str(e)}'
+            return jsonify({"message": error_message, "response": False})
+    else:
+        # Handle GET request here
+        return render_template('index.html')
+
+@app.route('/index', methods=['POST','GET'])
+def index():
+    return render_template('index.html')
+    
 @app.route('/', methods = ["GET", "POST"])
 def login():
     if request.method == "POST":
