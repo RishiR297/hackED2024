@@ -33,6 +33,10 @@ def forgot_password():
 def help():
     return render_template('help.html')
 
+@app.route('/newhome')
+def newhome():
+    return render_template('newhome.html')
+
 # code for graph
 y_values = []
 
