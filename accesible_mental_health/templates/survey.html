@@ -4,203 +4,318 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>University Student Mood Survey</title>
-  <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    />
-    <link
-    href="{{ url_for('static',filename='css/survey.css') }}"
-    rel="stylesheet"
-  />
-  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+  <link href="survey.css" rel="stylesheet" />
+
+  <style>
+  /* Style for the modal */
+  #surveyModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  #surveyModalContent {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 30px 0 0 30px;
+    border: 1px solid #ddd;
+    width: 60%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  /* Style for the close button */
+  #closeSurveyModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #closeSurveyModal:hover,
+  #closeSurveyModal:focus {
+    color: #333;
+    text-decoration: none;
+  }
+
+  /* Additional styles for the thank you message */
+  #surveyModalContent {
+    font-family: 'Pacifico', cursive; /* Change the font-family as needed */
+    font-size: 20px; /* Change the font-size as needed */
+    color: #333; /* Change the font color as needed */
+    background-color: #F8E71C; /* Change the background color as needed */
+    box-shadow: 0 0 20px 15px rgba(0.5, 0, 0, 0.1);
+    border-radius: 15px; /* Add border-radius for rounded corners */
+    padding: 20px;
+    width: 60%;
+    text-align: center;
+    position: relative;
+  }
+    
+  
+  #submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  #submit:hover {
+    background-color: #45a049;
+  }
+
+  /* Style for radio buttons */
+  .emoji-radio {
+    margin-right: 5px;
+  }
+
+  /* Style for text area */
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>
+</head>
 <body>
-  {% include 'base.html' %}
-  <form action="#" method="post" id="moodSurveyForm">
+    <form action="#" method="post" id="moodSurveyForm">
     <div class="survey-question">
-      <p>How would you describe your overall mood today?</p>
-      <label for="veryHappyRadio" class="radio-label">
-        😄 Very Happy
-        <input type="radio" id="veryHappyRadio" class="emoji-radio" name="mood" value="Very Happy">
-      </label>
-  
-      <label for="neutralRadio" class="radio-label">
-        😐 Neutral
-        <input type="radio" id="neutralRadio" class="emoji-radio" name="mood" value="Neutral">
-      </label>
-  
-      <label for="somewhatSadRadio" class="radio-label">
-        😢 Somewhat Sad
-        <input type="radio" id="somewhatSadRadio" class="emoji-radio" name="mood" value="Somewhat Sad">
-      </label>
-  
-      <label for="feelingAngryRadio" class="radio-label">
-        😠 Feeling Angry
-        <input type="radio" id="feelingAngryRadio" class="emoji-radio" name="mood" value="Feeling Angry">
-      </label>
+    
+                <p>How would you describe your overall mood today?</p>
+                <label for="veryHappyRadio" class="radio-label">
+                  😄 Very Happy
+                  <input type="radio" id="veryHappyRadio" class="emoji-radio" name="mood" value="Very Happy">
+                </label>
+            
+                <label for="neutralRadio" class="radio-label">
+                  😐 Neutral
+                  <input type="radio" id="neutralRadio" class="emoji-radio" name="mood" value="Neutral">
+                </label>
+            
+                <label for="somewhatSadRadio" class="radio-label">
+                  😢 Somewhat Sad
+                  <input type="radio" id="somewhatSadRadio" class="emoji-radio" name="mood" value="Somewhat Sad">
+                </label>
+            
+                <label for="feelingAngryRadio" class="radio-label">
+                  😠 Feeling Angry
+                  <input type="radio" id="feelingAngryRadio" class="emoji-radio" name="mood" value="Feeling Angry">
+                </label>
+              </div>
+            
+              <div class="survey-question">
+                <p>How did you feel about your classes today?</p>
+                <label for="excitedRadio" class="radio-label">
+                  😃 Excited and Engaged
+                  <input type="radio" id="excitedRadio" class="emoji-radio" name="classes" value="Excited and Engaged">
+                </label>
+            
+                <label for="neutralClassesRadio" class="radio-label">
+                  😐 Neutral
+                  <input type="radio" id="neutralClassesRadio" class="emoji-radio" name="classes" value="Neutral">
+                </label>
+            
+                <label for="stressedRadio" class="radio-label">
+                  😓 Stressed or Overwhelmed
+                  <input type="radio" id="stressedRadio" class="emoji-radio" name="classes" value="Stressed or Overwhelmed">
+                </label>
+            
+                <label for="boredRadio" class="radio-label">
+                  😒 Bored or Uninterested
+                  <input type="radio" id="boredRadio" class="emoji-radio" name="classes" value="Bored or Uninterested">
+                </label>
+              </div>
+          
+              <div class="survey-question">
+                <p>How satisfied are you with your academic progress?</p>
+                <label for="verySatisfiedRadio" class="radio-label">
+                  😊 Very Satisfied
+                  <input type="radio" id="verySatisfiedRadio" class="emoji-radio" name="academicProgress" value="Very Satisfied">
+                </label>
+            
+                <label for="satisfiedRadio" class="radio-label">
+                  🙂 Satisfied
+                  <input type="radio" id="satisfiedRadio" class="emoji-radio" name="academicProgress" value="Satisfied">
+                </label>
+            
+                <label for="neutralProgressRadio" class="radio-label">
+                  😕 Neutral
+                  <input type="radio" id="neutralProgressRadio" class="emoji-radio" name="academicProgress" value="Neutral">
+                </label>
+            
+                <label for="dissatisfiedRadio" class="radio-label">
+                  😟 Dissatisfied
+                  <input type="radio" id="dissatisfiedRadio" class="emoji-radio" name="academicProgress" value="Dissatisfied">
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>Did you face any challenges or stressors today? If so, please share.</p>
+                <label for="challengesInput">
+                  <textarea id="challengesInput" name="challenges" rows="3" cols="75" placeholder="Enter challenges/stressors"></textarea>
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>How well did you collaborate with your classmates on group projects or assignments?</p>
+                <label for="wellCollaborateRadio" class="radio-label">
+                  👍 Very Well
+                  <input type="radio" id="wellCollaborateRadio" class="emoji-radio" name="collaboration" value="Very Well">
+                </label>
+            
+                <label for="moderateCollaborateRadio" class="radio-label">
+                  👌 Moderately Well
+                  <input type="radio" id="moderateCollaborateRadio" class="emoji-radio" name="collaboration" value="Moderately Well">
+                </label>
+            
+                <label for="notWellCollaborateRadio" class="radio-label">
+                  👎 Not Well
+                  <input type="radio" id="notWellCollaborateRadio" class="emoji-radio" name="collaboration" value="Not Well">
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>How would you rate your level of motivation today?</p>
+                <label for="highlyMotivatedRadio" class="radio-label">
+                  💪 Highly Motivated
+                  <input type="radio" id="highlyMotivatedRadio" class="emoji-radio" name="motivation" value="Highly Motivated">
+                </label>
+            
+                <label for="moderateMotivatedRadio" class="radio-label">
+                  👍 Moderately Motivated
+                  <input type="radio" id="moderateMotivatedRadio" class="emoji-radio" name="motivation" value="Moderately Motivated">
+                </label>
+            
+                <label for="neutralMotivationRadio" class="radio-label">
+                  😐 Neutral
+                  <input type="radio" id="neutralMotivationRadio" class="emoji-radio" name="motivation" value="Neutral">
+                </label>
+            
+                <label for="lowMotivationRadio" class="radio-label">
+                  😴 Low Motivation
+                  <input type="radio" id="lowMotivationRadio" class="emoji-radio" name="motivation" value="Low Motivation">
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>Are there any specific concerns or issues affecting your mood that you'd like to discuss?</p>
+                <label for="concernsInput">
+                  <textarea id="concernsInput" name="concerns" rows="3" cols="75" placeholder="Enter concerns/issues"></textarea>
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>How did your interactions with professors and peers contribute to your day?</p>
+                <label for="positiveInteractionsRadio" class="radio-label">
+                  😃 Positive Interactions
+                  <input type="radio" id="positiveInteractionsRadio" class="emoji-radio" name="interactions" value="Positive Interactions">
+                </label>
+            
+                <label for="neutralInteractionsRadio" class="radio-label">
+                  😐 Neutral Interactions
+                  <input type="radio" id="neutralInteractionsRadio" class="emoji-radio" name="interactions" value="Neutral Interactions">
+                </label>
+            
+                <label for="challengingInteractionsRadio" class="radio-label">
+                  😕 Challenging Interactions
+                  <input type="radio" id="challengingInteractionsRadio" class="emoji-radio" name="interactions" value="Challenging Interactions">
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>How would you rate your work-life balance today?</p>
+                <label for="balancedRadio" class="radio-label">
+                  ⚖ Balanced
+                  <input type="radio" id="balancedRadio" class="emoji-radio" name="workLifeBalance" value="Balanced">
+                </label>
+            
+                <label for="workHeavyRadio" class="radio-label">
+                  😓 Work-Heavy
+                  <input type="radio" id="workHeavyRadio" class="emoji-radio" name="workLifeBalance" value="Work-Heavy">
+                </label>
+            
+                <label for="relaxationRadio" class="radio-label">
+                  🕰 Time for Relaxation
+                  <input type="radio" id="relaxationRadio" class="emoji-radio" name="workLifeBalance" value="Time for Relaxation">
+                </label>
+            </div>
+            
+            <div class="survey-question">
+                <p>Did you engage in any extracurricular activities or hobbies today?</p>
+                <label for="artRadio" class="radio-label">
+                  🎨 Art/Creative
+                  <input type="radio" id="artRadio" class="emoji-radio" name="activities" value="Art/Creative">
+                </label>
+            
+                <label for="exerciseRadio" class="radio-label">
+                  🏋‍♂ Physical Exercise
+                  <input type="radio" id="exerciseRadio" class="emoji-radio" name="activities" value="Physical Exercise">
+                </label>
+            
+                <label for="readingRadio" class="radio-label">
+                  📚 Reading/Studying
+                  <input type="radio" id="readingRadio" class="emoji-radio" name="activities" value="Reading/Studying">
+                </label>
+            
+                <label for="leisureRadio" class="radio-label">
+                  🎮 Leisure Activities
+                  <input type="radio" id="leisureRadio" class="emoji-radio" name="activities" value="Leisure Activities">
+                </label>
+        
     </div>
-  
-    <div class="survey-question">
-      <p>How did you feel about your classes today?</p>
-      <label for="excitedRadio" class="radio-label">
-        😃 Excited and Engaged
-        <input type="radio" id="excitedRadio" class="emoji-radio" name="classes" value="Excited and Engaged">
-      </label>
-  
-      <label for="neutralClassesRadio" class="radio-label">
-        😐 Neutral
-        <input type="radio" id="neutralClassesRadio" class="emoji-radio" name="classes" value="Neutral">
-      </label>
-  
-      <label for="stressedRadio" class="radio-label">
-        😓 Stressed or Overwhelmed
-        <input type="radio" id="stressedRadio" class="emoji-radio" name="classes" value="Stressed or Overwhelmed">
-      </label>
-  
-      <label for="boredRadio" class="radio-label">
-        😒 Bored or Uninterested
-        <input type="radio" id="boredRadio" class="emoji-radio" name="classes" value="Bored or Uninterested">
-      </label>
+
+    <button type="submit" id="submit">Submit</button>
+  </form>
+
+  <!-- Survey completion modal -->
+  <div id="surveyModal">
+    <div id="surveyModalContent">
+      <span id="closeSurveyModal" onclick="closeSurveyModal()">&times;</span>
+      <p>Thank you for participating in the survey! Your responses have been received. Please anticipate a 12-hour wait for a professional mental health analysis based on your input.</p>
     </div>
-
-    <div class="survey-question">
-      <p>How satisfied are you with your academic progress?</p>
-      <label for="verySatisfiedRadio" class="radio-label">
-        😊 Very Satisfied
-        <input type="radio" id="verySatisfiedRadio" class="emoji-radio" name="academicProgress" value="Very Satisfied">
-      </label>
-  
-      <label for="satisfiedRadio" class="radio-label">
-        🙂 Satisfied
-        <input type="radio" id="satisfiedRadio" class="emoji-radio" name="academicProgress" value="Satisfied">
-      </label>
-  
-      <label for="neutralProgressRadio" class="radio-label">
-        😕 Neutral
-        <input type="radio" id="neutralProgressRadio" class="emoji-radio" name="academicProgress" value="Neutral">
-      </label>
-  
-      <label for="dissatisfiedRadio" class="radio-label">
-        😟 Dissatisfied
-        <input type="radio" id="dissatisfiedRadio" class="emoji-radio" name="academicProgress" value="Dissatisfied">
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>Did you face any challenges or stressors today? If so, please share.</p>
-      <label for="challengesInput">
-        <textarea id="challengesInput" name="challenges" rows="3" cols="75" placeholder="Enter challenges/stressors"></textarea>
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>How well did you collaborate with your classmates on group projects or assignments?</p>
-      <label for="wellCollaborateRadio" class="radio-label">
-        👍 Very Well
-        <input type="radio" id="wellCollaborateRadio" class="emoji-radio" name="collaboration" value="Very Well">
-      </label>
-  
-      <label for="moderateCollaborateRadio" class="radio-label">
-        👌 Moderately Well
-        <input type="radio" id="moderateCollaborateRadio" class="emoji-radio" name="collaboration" value="Moderately Well">
-      </label>
-  
-      <label for="notWellCollaborateRadio" class="radio-label">
-        👎 Not Well
-        <input type="radio" id="notWellCollaborateRadio" class="emoji-radio" name="collaboration" value="Not Well">
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>How would you rate your level of motivation today?</p>
-      <label for="highlyMotivatedRadio" class="radio-label">
-        💪 Highly Motivated
-        <input type="radio" id="highlyMotivatedRadio" class="emoji-radio" name="motivation" value="Highly Motivated">
-      </label>
-  
-      <label for="moderateMotivatedRadio" class="radio-label">
-        👍 Moderately Motivated
-        <input type="radio" id="moderateMotivatedRadio" class="emoji-radio" name="motivation" value="Moderately Motivated">
-      </label>
-  
-      <label for="neutralMotivationRadio" class="radio-label">
-        😐 Neutral
-        <input type="radio" id="neutralMotivationRadio" class="emoji-radio" name="motivation" value="Neutral">
-      </label>
-  
-      <label for="lowMotivationRadio" class="radio-label">
-        😴 Low Motivation
-        <input type="radio" id="lowMotivationRadio" class="emoji-radio" name="motivation" value="Low Motivation">
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>Are there any specific concerns or issues affecting your mood that you'd like to discuss?</p>
-      <label for="concernsInput">
-        <textarea id="concernsInput" name="concerns" rows="3" cols="75" placeholder="Enter concerns/issues"></textarea>
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>How did your interactions with professors and peers contribute to your day?</p>
-      <label for="positiveInteractionsRadio" class="radio-label">
-        😃 Positive Interactions
-        <input type="radio" id="positiveInteractionsRadio" class="emoji-radio" name="interactions" value="Positive Interactions">
-      </label>
-  
-      <label for="neutralInteractionsRadio" class="radio-label">
-        😐 Neutral Interactions
-        <input type="radio" id="neutralInteractionsRadio" class="emoji-radio" name="interactions" value="Neutral Interactions">
-      </label>
-  
-      <label for="challengingInteractionsRadio" class="radio-label">
-        😕 Challenging Interactions
-        <input type="radio" id="challengingInteractionsRadio" class="emoji-radio" name="interactions" value="Challenging Interactions">
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>How would you rate your work-life balance today?</p>
-      <label for="balancedRadio" class="radio-label">
-        ⚖️ Balanced
-        <input type="radio" id="balancedRadio" class="emoji-radio" name="workLifeBalance" value="Balanced">
-      </label>
-  
-      <label for="workHeavyRadio" class="radio-label">
-        😓 Work-Heavy
-        <input type="radio" id="workHeavyRadio" class="emoji-radio" name="workLifeBalance" value="Work-Heavy">
-      </label>
-  
-      <label for="relaxationRadio" class="radio-label">
-        🕰️ Time for Relaxation
-        <input type="radio" id="relaxationRadio" class="emoji-radio" name="workLifeBalance" value="Time for Relaxation">
-      </label>
-  </div>
-  
-  <div class="survey-question">
-      <p>Did you engage in any extracurricular activities or hobbies today?</p>
-      <label for="artRadio" class="radio-label">
-        🎨 Art/Creative
-        <input type="radio" id="artRadio" class="emoji-radio" name="activities" value="Art/Creative">
-      </label>
-  
-      <label for="exerciseRadio" class="radio-label">
-        🏋️‍♂️ Physical Exercise
-        <input type="radio" id="exerciseRadio" class="emoji-radio" name="activities" value="Physical Exercise">
-      </label>
-  
-      <label for="readingRadio" class="radio-label">
-        📚 Reading/Studying
-        <input type="radio" id="readingRadio" class="emoji-radio" name="activities" value="Reading/Studying">
-      </label>
-  
-      <label for="leisureRadio" class="radio-label">
-        🎮 Leisure Activities
-        <input type="radio" id="leisureRadio" class="emoji-radio" name="activities" value="Leisure Activities">
-      </label>
   </div>
 
-  <button type="submit" id="submit">Submit</button>
-</form>
+  <script>
+    function showSurveyModal() {
+      document.getElementById('surveyModal').style.display = 'block';
+    }
 
+    function closeSurveyModal() {
+      document.getElementById('surveyModal').style.display = 'none';
+    }
+
+    function showFinalPopup() {
+      showSurveyModal();
+      // You can add additional actions or redirect to another page if needed
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("moodSurveyForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // You can add any form validation logic here before showing the final popup
+
+        // Assuming validation is successful, show the final popup
+        showFinalPopup();
+      });
+    });
+  </script>
 </body>
-</html>
+</html
