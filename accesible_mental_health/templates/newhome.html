@@ -19,15 +19,13 @@
     {% include 'base.html' %}
     
       <div class="center-button-container">
-        <fieldset>
         <a href="{{ url_for('survey') }}">
-          <button id="survey-btn" class="center-button">Survey</button></a
-        >
-        <button id="mood-btn" class="center-button">Mood Tracker</button>
-        <a href="{{ url_for('chatbot') }}">
-          <button id="chat-btn" class="center-button">Chatbot</button></a
-        >
+          <button id="survey-btn" class="center-button">Survey</button></a>
+
+          <a href="{{ url_for('calendar') }}">
+        <button id="mood-btn" class="center-button">Mood Tracker</button></a>
+
+        <a href="{{ url_for('index') }}"><button id="track-btn" class="center-button">Chat Bot</button></a>
       </div>
-    </fieldset>
   </body>
 </html>
