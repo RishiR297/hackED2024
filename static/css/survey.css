@@ -52,62 +52,94 @@ Variables
   --max-width: 1170px;
   --fixed-width: 620px;
 }
-/*
-=============== 
-Global Styles
-===============
-*/
-
-*,
-::after,
-::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body {
   font-family: var(--ff-secondary);
   background: var(--clr-grey-10);
   color: var(--clr-grey-1);
-  line-height: 1;
-  font-size: 0.875rem;
-  padding-bottom: 50px;
-  background-image: url(bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 20px;
+  margin: 0; /* This removes any default margin */
+  background-image: url("/static/jpgs/bg.jpg");
 }
-
 form {
   width: 60vw;
   max-width: 500px;
   min-width: 500px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  background-color: var(--clr-grey-10);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   align-items: center;
 }
+
+.survey-question {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.emoji-checkbox {
+  display: none;
+}
+
 label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="time"],
-textarea {
-  width: 100%;
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #ddd;
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
-input[type="submit"] {
+.emoji {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+label.checkbox-label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="checkbox"]:checked + label.checkbox-label {
+  background-color: #4caf50;
+  color: white;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  align-items: center;
+}
+textarea {
+  margin: 10px 0 0 0;
+  width: 100%;
+  min-height: 2em;
+  align-items: center;
+}
+
+#submit {
   display: block;
-  width: 50%;
+  width: 25%;
   margin: 1em auto;
   height: 2em;
   font-size: 1.1rem;
@@ -118,105 +150,8 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+#submit:hover {
   background-color: var(--clr-primary-5);
-}
-input {
-  box-sizing: border-box;
-}
-textarea {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-ul {
-  list-style-type: none;
-}
-a {
-  text-decoration: none;
-}
-h1,
-h2,
-h3,
-h4 {
-  text-transform: capitalize;
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-  font-family: var(--ff-primary);
-}
-h1 {
-  font-size: 2rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-h4 {
-  font-size: 0.875rem;
-}
-p {
-  margin-bottom: 1.25rem;
-  color: var(--clr-grey-5);
-}
-@media screen and (min-width: 800px) {
-  h1 {
-    font-size: 2rem;
-  }
-  .services,
-  .contact-header {
-    /* font-size: 1.75rem; */
-    text-align: left;
-    margin-top: 100px;
-  }
-
-  h3 {
-    font-size: 1.75rem;
-  }
-  h4 {
-    font-size: 1rem;
-  }
-  body {
-    font-size: 1rem;
-  }
-  .items {
-    margin: auto;
-  }
-  #about {
-    margin-top: auto;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1;
-  }
-}
-/*  global classes */
-
-/* section */
-.section {
-  padding: 5rem 0;
-}
-
-.section-center {
-  width: 90vw;
-  margin: 0 auto;
-  max-width: 1170px;
-}
-@media screen and (min-width: 992px) {
-  .section-center {
-    width: 95vw;
-  }
-}
-main {
-  min-height: 100vh;
-  display: grid;
-  /* place-items: center; */
 }
 
 .dropbtn {
@@ -288,4 +223,64 @@ main {
 .dropdown-content a:hover {
   background-color: #f1f1f1;
   border-radius: 15px;
+}
+/* Additional styles for the thank you message */
+#surveyModalContent {
+  font-family: "Pacifico", cursive; /* Change the font-family as needed */
+  font-size: 20px; /* Change the font-size as needed */
+  color: #333; /* Change the font color as needed */
+  background-color: #f8e71c; /* Change the background color as needed */
+  box-shadow: 0 0 20px 15px rgba(0.5, 0, 0, 0.1);
+  border-radius: 15px; /* Add border-radius for rounded corners */
+  padding: 20px;
+  width: 60%;
+  text-align: center;
+  position: relative;
+}
+
+#surveyModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for radio buttons */
+.emoji-radio {
+  margin-right: 5px;
+}
+
+#surveyModalContent {
+  font-family: "Pacifico", cursive; /* Change the font-family as needed */
+  font-size: 20px; /* Change the font-size as needed */
+  color: #333;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 60%;
+  border: 1px solid #ddd;
+  max-width: 600px;
+  box-shadow: 0 0 20px 15px rgba(0.5, 0, 0, 0.1);
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+}
+
+#closeSurveyModal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#closeSurveyModal:hover,
+#closeSurveyModal:focus {
+  color: #333;
+  text-decoration: none;
 }

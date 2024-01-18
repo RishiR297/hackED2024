@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dynamic Scrolling Page</title>
+    <title>Web App</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="header">
-      <p>Hi, User!</p>
+      <p>Hi, {{ user.username }}</p>
       <p>How can we help you today?</p>
     </div>
     {% include 'base.html' %}

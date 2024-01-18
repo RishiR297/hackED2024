@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link
+      href="{{ url_for('static',filename='css/profile.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  {% include 'base.html' %}
+
+  <body>
+    <h1>Your Profile</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <div style="display: flex;">
+        <a href="#" onclick="document.getElementById('profile_picture').click(); return false;">
+            <!-- <img id="profile_img" src="{{ url_for('static', filename='jpgs/user.png') }}" alt="Profile Picture" class="user-profile"> -->
+            <div class="profile-space"></div>
+        </a>
+        <input type="file" id="profile_picture" name="profile_picture" style="display: none;" onchange="previewFile()">
+        <h2 class="name">{{ user.username }}</h2>
+      </div>
+    </form>
+    <fieldset class ="info">
+        <label for="bio"> <input id="age" type="number" name="age" min="13" max="120" /></label><br>
+        <label for="moods">Your Mood Today:
+            <select id="referrer" name="referrer">
+              <option value=""></option>
+              <option value="1">Delighted</option>
+              <option value="2">Happy</option>
+              <option value="3">Neutral</option>
+              <option value="4">Sad</option>
+                <option value="5">Depressed</option>
+            </select>
+        
+    </fieldset>
+    <fieldset class ="posts">
+            <label for="blogs">Your Posts:</label>
+        </fieldset>
+    <script>
+      function previewFile() {
+          const preview = document.querySelector('#profile_img');
+          const file = document.querySelector('#profile_picture').files[0];
+          const reader = new FileReader();
+
+          reader.addEventListener("load", function () {
+              // convert image file to base64 string
+              preview.src = reader.result;
+          }, false);
+
+          if (file) {
+              reader.readAsDataURL(file);
+          }
+      }
+  </script>
+  </body>
+</html>

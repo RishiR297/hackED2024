@@ -54,38 +54,62 @@ Variables
 }
 
 body {
-    font-family: var(--ff-secondary);
-    background: var(--clr-grey-10);
-    color: var(--clr-grey-1);
-    line-height: 1;
-    font-size: 0.875rem;
-    padding-bottom: 50px;
-    background-image: url(bg.jpg);
-  }
-
-  form {
-    width: 60vw;
-    max-width: 500px;
-    min-width: 500px;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: var(--clr-grey-10);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-    align-items: center;
-  }
-  
-
-.con {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    max-width: 900px;
+  font-family: var(--ff-secondary);
+  background: var(--clr-grey-10);
+  color: var(--clr-grey-1);
+  line-height: 1;
+  font-size: 0.875rem;
+  padding-bottom: 50px;
+  background-image: url("/static/jpgs/bg.jpg");
 }
+
+
+
+form {
+  width: 60vw;
+  max-width: 500px;
+  min-width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: var(--clr-grey-10);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+  height: 100vh;
+  /* display: flex; */
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.header {
+  /* background-color: #333; */
+  /* color: #fff; */
+  padding: 2px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+h2,
+p {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  padding: 2px;
+}
+
 .dropbtn {
   position: fixed;
   top: 2rem;
@@ -155,4 +179,89 @@ body {
 .dropdown-content a:hover {
   background-color: #f1f1f1;
   border-radius: 15px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the text */
+  left: 50%;
+  margin-left: -60px; /* Use half of the width to center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.dropdown-content a:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* BUTTONS FORMAT */
+
+.center-button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+}
+
+.center-button {
+  padding: 50px 50px;
+  font-size: 30px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 50px;
+  display: block;
+  transition: transform 0.4s ease;
+  border-color: rgba(255, 255, 255, 0.5);
+
+  /* Add these lines */
+  width: 500px; /* or any specific value according to your design requirements */
+  text-align: center; /* to keep the text centered */
+}
+
+/* Individual styling for each button */
+#survey-btn {
+  background-color: var(--clr-primary-8);
+}
+
+.center-button-container a {
+  text-decoration: none;
+}
+
+#mood-btn {
+  background-color: var(--clr-grey-8);
+}
+
+#track-btn {
+  background-color: var(--clr-grey-6);
+}
+
+fieldset {
+  border: 2px solid var(--clr-primary-8);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px 15px rgba(0.5, 0, 0, 0.1);
 }

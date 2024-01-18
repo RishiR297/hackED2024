@@ -5,94 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>University Student Mood Survey</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-  <link href="survey.css" rel="stylesheet" />
-
-  <style>
-  /* Style for the modal */
-  #surveyModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  #surveyModalContent {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 30px 0 0 30px;
-    border: 1px solid #ddd;
-    width: 60%;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  /* Style for the close button */
-  #closeSurveyModal {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  #closeSurveyModal:hover,
-  #closeSurveyModal:focus {
-    color: #333;
-    text-decoration: none;
-  }
-
-  /* Additional styles for the thank you message */
-  #surveyModalContent {
-    font-family: 'Pacifico', cursive; /* Change the font-family as needed */
-    font-size: 20px; /* Change the font-size as needed */
-    color: #333; /* Change the font color as needed */
-    background-color: #F8E71C; /* Change the background color as needed */
-    box-shadow: 0 0 20px 15px rgba(0.5, 0, 0, 0.1);
-    border-radius: 15px; /* Add border-radius for rounded corners */
-    padding: 20px;
-    width: 60%;
-    text-align: center;
-    position: relative;
-  }
-    
-  
-  #submit {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  #submit:hover {
-    background-color: #45a049;
-  }
-
-  /* Style for radio buttons */
-  .emoji-radio {
-    margin-right: 5px;
-  }
-
-  /* Style for text area */
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-</style>
+  <link  href="{{ url_for('static',filename='css/survey.css') }}"
+  rel="stylesheet" />
+  {% include 'base.html' %}
 </head>
 <body>
     <form action="#" method="post" id="moodSurveyForm">
