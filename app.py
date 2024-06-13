@@ -7,6 +7,8 @@ from flask_cors import CORS
 import openai
 import os
 
+#13-06-2024
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
