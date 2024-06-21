@@ -7,10 +7,6 @@ from flask_cors import CORS
 import openai
 import os
 
-#13-06-2024
-
-
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecretkey'
@@ -71,7 +67,7 @@ def view_data():
 def index():
     return render_template('index.html')
     
-@app.route('/', methods = ["GET", "POST"])
+@app.route('/login', methods = ["GET", "POST"])
 def login():
     if request.method == "POST":
         email = request.form.get('email')
@@ -132,8 +128,10 @@ def upload_file():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return 'File uploaded successfully'
     
-@app.route('/newhome')
-@login_required
+# @app.route('/newhome')
+@app.route('/')
+
+# @login_required
 def newhome():
     return render_template('newhome.html', user=current_user)
 
