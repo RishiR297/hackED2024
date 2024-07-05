@@ -130,6 +130,8 @@ def upload_file():
     
 # @app.route('/newhome')
 @app.route('/')
+def home():
+    return render_template('newhome.html', user=current_user)
 
 # @login_required
 def newhome():
